@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Table, Button } from 'antd';
@@ -23,12 +23,13 @@ const copyStaffs = ( staffStore: Array<Staff> ) => {
 }
 
 const Home = ({ staffs, onAddStaffs, onDeleteStaff} : Props) => {
+  console.log(staffs);
+  
   const router = useRouter();
   const store = useStore();
   const staffsStore  = store.getState().staffs;
   const [staffStore, setStaffStore] = useState(staffsStore  === null ? staffs : staffsStore === [] ? [] : staffsStore);
   onAddStaffs(staffStore);
-  
 
   const button = {
     background: '#D4EDDA',

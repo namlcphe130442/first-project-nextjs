@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import '../styles/globals.css'
 import "../styles/antd.less";
 import {createStore} from 'redux';
@@ -9,7 +10,7 @@ const store = createStore(
   myReducer
 );
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, staffs }) {
   return(
     <Provider store={store}>
       <Component {...pageProps} />
