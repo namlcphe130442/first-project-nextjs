@@ -1,6 +1,6 @@
 type Staff = {
     id: number,
-    name: string,
     email: string,
+    name: string,
     salary: number,
 }

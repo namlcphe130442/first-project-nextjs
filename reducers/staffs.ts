@@ -51,6 +51,8 @@ const myReducer = (state = null, { staffs, staff, type, id} : Action) => {
         if(state !== null)
         state.push(newStaff);
         addData(newStaff);
+        console.log([...state]);
+        
         return state === null ? state : [...state];
       case "DELETE_STAFF":
         var staff_delete_id = id;
@@ -60,11 +62,18 @@ const myReducer = (state = null, { staffs, staff, type, id} : Action) => {
         return [...state];
       case "EDIT_STAFF":
         if(state !== null){
-          index = findIndex(staff.id,  state);
+          let i: number;
+          for (i = 0; i < state.length; i++) {
+            if(state[i].id == staff.id){
+              index = i;
+              break;
+            }
+          }
           state[index] = staff;
-        }        
+        }      
         editData(staff);
-        return state === null ? state : [...state];
+        
+        return state === null ? state : state;
       default: return state;
     }
 };
